@@ -118,7 +118,7 @@ google-auth==2.39.0
 googleapis-common-protos==1.70.0
 greenlet==3.0.1
 grpcio==1.71.0
-h11==0.14.0
+h11==0.16.0
 h2==4.2.0
 h5py==3.13.0
 HeapDict==1.0.1
