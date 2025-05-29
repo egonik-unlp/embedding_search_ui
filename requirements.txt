@@ -401,7 +401,7 @@ semver==3.0.2
 Send2Trash==1.8.2
 sentence-transformers==4.1.0
 service-identity==18.1.0
-setuptools==75.1.0
+setuptools==78.1.1
 shellingham==1.5.4
 sip==6.7.12
 six==1.16.0
