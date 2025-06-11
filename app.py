@@ -9,6 +9,7 @@ client = QdrantClient(
  	url=st.secrets["qdrant"]["url"],
  	api_key=st.secrets["qdrant"]["key"]
  )
+print("Secretines")
 print(st.secrets["qdrant"])
 # client = QdrantClient(url="http://qdrant:6333")
 
