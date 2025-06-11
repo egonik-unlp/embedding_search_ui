@@ -9,7 +9,7 @@ client = QdrantClient(
  	url=st.secrets["qdrant"]["url"],
  	api_key=st.secrets["qdrant"]["key"]
  )
-
+print(st.secrets["qdrant"])
 # client = QdrantClient(url="http://qdrant:6333")
 
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
