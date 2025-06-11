@@ -16,7 +16,10 @@ model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 # model = model.to("cpu")
 _ = model.encode("test", normalize_embeddings=True) 
+collection_name = "ingredientes_vec2"
 
+if client.collection_exists(collection_name):
+	st.write("collection exists")
 def busqueda_metodo_anterior(documents):
 	return "todo"
 
@@ -28,7 +31,7 @@ def busqueda(documents):
 
 			# Perform search
 			results = client.search(
-			collection_name="ingredientes_vec2",
+			collection_name=collection_name,
 			query_vector=query_embedding.tolist(), 
 			limit=1
 		)
@@ -49,7 +52,7 @@ def busqueda_mas75(documents):
 
 			# Perform search
 			results = client.search(
-			collection_name="ingredientes_vec2",
+			collection_name=collection_name,
 			query_vector=query_embedding.tolist(), 
 			limit=1
 		)
