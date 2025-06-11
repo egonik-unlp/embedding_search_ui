@@ -5,12 +5,12 @@ from qdrant_client import QdrantClient, models
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
-# client = QdrantClient(
-#  	url=st.secrets["qdrant"]["url"],
-#  	api_key=st.secrets["qdrant"]["key"]
-#  )
+client = QdrantClient(
+ 	url=st.secrets["qdrant"]["url"],
+ 	api_key=st.secrets["qdrant"]["key"]
+ )
 
-client = QdrantClient(url="http://qdrant:6333")
+# client = QdrantClient(url="http://qdrant:6333")
 
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
@@ -28,7 +28,7 @@ def busqueda(documents):
 
 			# Perform search
 			results = client.search(
-			collection_name="ingredientes_tabla2",
+			collection_name="ingredientes_vec2",
 			query_vector=query_embedding.tolist(), 
 			limit=1
 		)
@@ -49,7 +49,7 @@ def busqueda_mas75(documents):
 
 			# Perform search
 			results = client.search(
-			collection_name="ingredientes_tabla2",
+			collection_name="ingredientes_vec2",
 			query_vector=query_embedding.tolist(), 
 			limit=1
 		)
