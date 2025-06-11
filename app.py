@@ -5,14 +5,16 @@ from qdrant_client import QdrantClient, models
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
-client = QdrantClient(
- 	url=st.secrets["qdrant"]["url"],
- 	api_key=st.secrets["qdrant"]["key"]
- )
+# client = QdrantClient(
+#  	url=st.secrets["qdrant"]["url"],
+#  	api_key=st.secrets["qdrant"]["key"]
+#  )
+
+client = QdrantClient(url="http://qdrant:6333")
 
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
-model = model.to("cpu")
+# model = model.to("cpu")
 _ = model.encode("test", normalize_embeddings=True) 
 
 def busqueda_metodo_anterior(documents):
@@ -26,7 +28,7 @@ def busqueda(documents):
 
 			# Perform search
 			results = client.search(
-			collection_name="ingredientes",
+			collection_name="ingredientes_tabla2",
 			query_vector=query_embedding.tolist(), 
 			limit=1
 		)
@@ -47,7 +49,7 @@ def busqueda_mas75(documents):
 
 			# Perform search
 			results = client.search(
-			collection_name="ingredientes",
+			collection_name="ingredientes_tabla2",
 			query_vector=query_embedding.tolist(), 
 			limit=1
 		)
@@ -58,7 +60,7 @@ def busqueda_mas75(documents):
 			x = result.payload
 			x["query"] = query
 			x["score"] = result.score
-			if result.score > 0.75:
+			if result.score > 0.60:
 				st.json(result.payload)
 				print(res)
 

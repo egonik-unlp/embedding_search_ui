@@ -1,6 +1,9 @@
 services:
   qdrant:
     image: qdrant/qdrant:latest
+    expose:
+      - 6333
+      - 6334
     ports:
       - "6334:6334"
       - "6333:6333"
@@ -9,7 +12,7 @@ services:
   app:
     build: "."
     ports:
-      - "8501:8501"
+      - "8502:8501"
 
 volumes:
   storage:
